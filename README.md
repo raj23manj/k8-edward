@@ -148,6 +148,78 @@ Deployments:
 	Service Command Mauually:
 	  kubectl expose deployment helloworld-deployment --type=NodePort -> creates a type nodeport, which we create as service file
 		
-	Services:
-	  	
-		 	
+	Services: (kubectl svc ....)
+	  it is the logical bridge between the pods and other services or end users, because while deployent or update 
+		new pods are created, so it is bad to access them directly
+		
+		services can run only between 30000 - 32767
+		
+		creating a service will create a end point for the pods
+		  types:
+			  ClusterIp -> a virtual IP addr only reachable from within the cluster(this is default)
+				NodePort -> a port that is the same on each node that is also reachable externally
+				LoadBalancer -> created by cloud provider to route external traffic to every node on the node port
+			 	
+	Labels: (under deployment nodeSelector)
+	  kubectl label nodes node1 hardware=high-spec
+		kubectl label nodes node2 hardware=low-spec
+	  used to tags for pods
+		once nodes are tagged you can use label selectors to let pods only run on specific nodes
+		There are 2 steps:
+		  1) First tag the node
+			2) Then you add a nodeSelector to your pod configuration
+			  nodeSelector:
+				  hardware: spec
+	
+	Health Checks: (under deployment healthcheck)
+	  two ways:
+		  1) running a command in a container periodically
+			2) periodic checks on a URL -> used most	
+				livenessProbe:
+					httpGet:
+						path: /
+						port: nodejs-port
+					initialDelaySeconds: 15
+					timeoutSeconds: 30
+					
+			kubectl edit <pod-name>	 -> to see the settings
+		
+		livenessProbe:
+		  indicates whether a container is running, if check fails the container will be restarted
+		Readiness Probe:
+		  indicates whether the container is ready to serve requests.
+			if check fails the container will not be restarted, but the pods ip address will be removed from the service, so that it'll not serve any requests anymore	
+		
+		In general we configure both	
+		kubectl create -f <yml> && watch -n1 kubectl get pods
+		
+	Pod	State:
+	  Pod Status -> high level status 
+		Pod Condition -> the condition of the pod
+		Container State -> state of the containers itself
+		Pending:
+		  happens when the container image is still downloading
+			if the pod cannot be scheduled because of resource constraints, it'll be in this status
+		Succeeded -> all containers terminated and will not be restarted
+		Failed -> all containers have been terminated and atleast one container returned a failure code
+		  failure code is the exit code of the process when a container terminates
+		Unknown -> the state of the pod could'nt be determined(a network error)		
+		
+		kubectl get pods -n kube-system -> pods from specific node name system
+		kubectl describe pod <pod-name> -n <node-name>
+		
+		There are 5 different types of PodConditions
+		  PodScheduled -> pod has been scheduled to a node
+			Ready -> Pod can serve requests and is going to be added to matching Services
+			Initialized -> initialization of the containers have been started successfully
+			Unschedulable -> pod can't be Scheduled
+			ContainersReady -> all containers in the pod are ready
+			
+		Get Container State:
+		  kubectl get pod <pod-name> -n <node-name> -o yaml
+			
+	Pod Lifecyle: (pod-lifecycles)
+	  kubectl exec -it <pod-name> -- tail <path-to-file> -f
+	
+	Secrets:
+	  			
