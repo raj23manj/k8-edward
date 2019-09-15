@@ -247,5 +247,32 @@ Deployments:
 		ENV wordpress secrets: (word-press)
 		
 		Questions:
-		  kube-apiserver and kube-scheduler runs on the master nodes		
-		  	
+		  kube-apiserver and kube-scheduler runs on the master nodes
+			
+Advanced Topics:
+
+  Service Discovery(DNS): (service-discovery)					
+		
+		Using DNS	built in service this is launched automatically
+		can be found on master node on /etc/kubernetes/addons
+		DNS is used to find other services running in the same Cluster(namespace)
+		Multiple containers running in the same pod don't need this DNS, they can contact with local host directly Using
+		localhost:port
+		To make DNS work, a pod will need a Service definition 
+		There is a default namespace, we can have pods and services launched in logical namespace
+		
+		Check if connection was made:
+		  kubectl logs <pod-name>
+		
+	Config Maps: (configmap)
+		Configurations that are not secret can be put in ConfigMap
+		As key-value pairs stored
+		From app can be read a ENV variables, as container commandline arguments in the pod Configurations and 
+		using volumes
+		
+	Ingress: (ingress)
+	  it is used to allow inbound connections to the cluster
+		it is an alternative to external LoadBalancer and NodePorts
+		with ingress you can run your own ingressController(loadbalancer) within the Cluster
+		there are default images available	
+		
