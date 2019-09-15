@@ -221,5 +221,31 @@ Deployments:
 	Pod Lifecyle: (pod-lifecycles)
 	  kubectl exec -it <pod-name> -- tail <path-to-file> -f
 	
-	Secrets:
-	  			
+	Secrets: (deployment)
+	  provides a way to distribute secret data to pods
+		provides secrets to app 
+		use as env variables
+		as a file in a pod using volumes
+		used with dotenv
+		
+		To generate using files:
+		  echo -n "root" > ./username.txt
+			echo -n "password" > ./password.txt
+			kubectl create secret generic db-user-pass --from-file=./usermane.txt --from-file=./password.txt
+			
+		Using Yaml:
+		  encode with base 64:
+			  $ echo -n "root"|base64 -> asd
+				$ echo -n "password"|base64 -> xsx
+		  data:
+			  password: xsx
+				username: asd
+				
+		To Get a Shell like in docker: (43)
+		  kubectl exec <pod-name> -i -t -- /bin/bash	
+			
+		ENV wordpress secrets: (word-press)
+		
+		Questions:
+		  kube-apiserver and kube-scheduler runs on the master nodes		
+		  	
