@@ -85,7 +85,7 @@ Useful Commands
 minikube service <name> —url
 kubectl exec nodehelloworld.example.com -- ls /app
 kubectl describe service <service-name>
-
+kubectl create -f <yml> --record 
 
 Questions
 
@@ -142,3 +142,12 @@ Deployments:
 		kubectl rollout history -> get history
 		kubectl rollout undo deployment/helloworl-deployment -> rollback to previous version
 		kubectl rollout undo deployment/helloworl-deployment --to-revision=n -> rollback to specific version
+		
+		kubectl create -f <yml> --record -> to store rollouts
+		
+	Service Command Mauually:
+	  kubectl expose deployment helloworld-deployment --type=NodePort -> creates a type nodeport, which we create as service file
+		
+	Services:
+	  	
+		 	
