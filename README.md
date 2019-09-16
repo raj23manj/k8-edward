@@ -300,7 +300,46 @@ Advanced Topics:
 		statefulsets allow stateful apps stable storage with volumes on their number	
 		deleting and/or scaling a statefulset down will not delete the volumes associated with it
 		A statefulSet will allow your stateful app to use DNS to find other peers
+		cassandra, elastic search
 		
 	Daemon Sets:
-	  	
+	  it ensures that every single node in the k8s cluster runs the same pod resources
+		it is useful if we want to ensure that a certain pod is running on every single node
+		when a node is added to the cluster a new pod will be started automatically
+		same when a node is removed the pod will not be rescheduled on another node
+		usecases:
+		  Logging aggregators
+			Monitoring
+			LoadBalancer / reverse Proxies / API Gateways 
+			Running a daemon that only needs one instance per physical instance
+			
+	Resource Usage Monitoring: (metric server)
+	  Heapster(deprecated) enables Container Cluster Monitoring and Performance Analysis
+		it is a prerequisite if you want to do a pod auto scaling
+		Heapster exports cluster metrics via REST endpoints
+		Visualizations can be shown using Grafana
+		CAdvisor is used to accumulate the metrics	
+		
+		Heapster is deprecated so use Metric Server(prometeus)		
+		
+		kubectl top node/pod -> to see metrics
+		
+	Auto Scaling:
+	  Horizontal auto scaling is possible
+	
+	Affinity and anti-affinity:
+	 	similar to nodeSelector for node affinity, can do more complex scheduling	
+		pod affinity/anti-affinity allows to create rules how pods should be scheduled taking into account other running pods
+		This mechanism is only relevant during scheduling, once a pod is running it'll need to be recreated to apply rules again
+		
+	Taints and Tolerations:
+	  opposite of node affinity
+		used to say pods cannot run on same nodes
+		taints are applied to nodes and tolerations are applied to pods 
+		
+	Custom Resource Definitions:
+	  how we define the pods
+	
+	Operators:
+	  it is a method of packaging, deploying and managing a k8s app	
 		
