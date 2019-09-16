@@ -275,4 +275,32 @@ Advanced Topics:
 		it is an alternative to external LoadBalancer and NodePorts
 		with ingress you can run your own ingressController(loadbalancer) within the Cluster
 		there are default images available	
+		we can use ingressController to reduce LoadBalancer costs 
+		
+	External DNS: (external-dns)
+	  we can use one loadbalancer to capture all the traffic and pass it to the ingressController
+		works only for http(s)
+		this tool will automatically setup necessary DNS records in your external DNS server(like route53)
+		for every hostname that you use in ingress, it'll create a new record to send traffic to your loadbalancer
+		
+	Volumes: (volumes)
+	  stateful application
+	
+	Volumes Provision Storage: (word press volumes)
+	  storageclass	
+		
+	Pod Presets: (pod-preset)
+	  it is used to inject information into pods at runtime
+		it is used to inject kubernetes resources like secrets, configmaps, volumes and ENV variables, volumemounts
+		if we have 20 apps, we can have one preset object which will inject variables to matching pods	
+		
+	Stateful Sets: (stateful)
+	  when a pod needs a stable pod hostname instead of a podname-random-hashstring
+		Pod name identity will be using Index, like podname-0, podname-1 etc
+		statefulsets allow stateful apps stable storage with volumes on their number	
+		deleting and/or scaling a statefulset down will not delete the volumes associated with it
+		A statefulSet will allow your stateful app to use DNS to find other peers
+		
+	Daemon Sets:
+	  	
 		
