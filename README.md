@@ -343,3 +343,103 @@ Advanced Topics:
 	Operators:
 	  it is a method of packaging, deploying and managing a k8s app	
 		
+		
+Kubernetes Administration:
+  
+	Master Services:
+	
+	Resource Quotas:
+	  Resource capacity: each container can specify request capacity and capacity limits 
+		  the scheduler can use the request capacity to make decisions on where to put the pod on
+			You can see it as a minimum amount of resources the pod needs 
+			 		
+		Resource Limits: is a limit imposed to the Container 
+		
+	NameSpace:
+	  allow to create virtual clusters within the same physical cluster
+		namespaces logically seperate our clusters
+		the standard namespace is default 
+		there is also namespace for kubernetes specific resources called kube-system(monitoring, dns addon, dashboard )
+		namespaces are intended when you have multiple teams/projects using the k8s cluster
+		name of the resource needs to be unique in a namespace
+		we can divide resources of a k8's cluster using namespaces 
+		we can limit resources on a per namespace basis
+		
+	request & limits:
+	  https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-resource-requests-and-limits	
+		
+	User Management:
+	  A normal User, which is used to access the user externally. (through kubectl), this 
+		user is not managed using objects
+		A service User which is managed by an object in K8s
+		  this user needs authentication within the cluster(from inside a pod or from a kubelet)
+			
+	Networking:
+	
+	High Availability
+	
+	TLS on ELB:
+	  Assigning cert
+	
+	Helm:
+	  Package manager for K8s	
+		
+	Istio: (service Mesh)
+	  provides a side car(envoy proxy) to each containers, 
+		a common config place (pilot)
+		Citadel -> to issue TLS crts to each envoy proxy	
+		
+		Istio-ingress:
+		  to define a service for istio-ingress we need to define a virtual service
+			
+			
+# Practial 
+
+  Create a label for different node
+	  kubectl label nodes minikube env_running=dev			
+		kubectl get nodes --show-labels
+		
+		
+# Minikube Build Image 
+  * https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube
+	# Start minikube
+	minikube start
+
+	# Set docker env
+	eval $(minikube docker-env)
+
+	# Build image
+	docker build -t foo:0.0.1 .
+
+	# Run in minikube
+	kubectl run hello-foo --image=foo:0.0.1 --image-pull-policy=Never
+
+	# Check that it's running
+	kubectl get pods		
+	  		
+
+# Extenal end endpoints
+* https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-mapping-external-services
+  * https://github.com/kubernetes/minikube/issues/2735
+  * https://stackoverflow.com/questions/49289009/during-local-development-with-kubernetes-minikube-how-should-i-connect-to-postg
+	kind: Service
+	apiVersion: v1
+	metadata:
+	name: postgres
+	namespace: default
+	spec:
+	type: ExternalName
+	# https://docs.docker.com/docker-for-mac/networking/#use-cases-and-workarounds
+	externalName: host.docker.internal
+	ports:
+		- name: port
+			port: 5432			
+			
+# Check Ingress:
+  * https://medium.com/@ManagedKube/kubernetes-troubleshooting-ingress-and-services-traffic-flows-547ea867b120
+	
+# labels, selectors
+  * https://blog.mayadata.io/openebs/kubernetes-label-selector-and-field-selector
+	
+# Minikube Config
+  * https://darkowlzz.github.io/post/minikube-config/						
