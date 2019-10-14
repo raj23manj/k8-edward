@@ -172,6 +172,7 @@ Deployments:
 				  hardware: spec
 	
 	Health Checks: (under deployment healthcheck)
+	  https://www.baeldung.com/spring-boot-kubernetes-self-healing-apps
 	  two ways:
 		  1) running a command in a container periodically
 			2) periodic checks on a URL -> used most	
@@ -271,6 +272,7 @@ Advanced Topics:
 		using volumes
 		
 	Ingress: (ingress)
+	  https://akomljen.com/aws-alb-ingress-controller-for-kubernetes/
 	  it is used to allow inbound connections to the cluster
 		it is an alternative to external LoadBalancer and NodePorts
 		with ingress you can run your own ingressController(loadbalancer) within the Cluster
@@ -442,4 +444,10 @@ Kubernetes Administration:
   * https://blog.mayadata.io/openebs/kubernetes-label-selector-and-field-selector
 	
 # Minikube Config
-  * https://darkowlzz.github.io/post/minikube-config/						
+  * https://darkowlzz.github.io/post/minikube-config/			
+	
+	
+# Prod EKS	
+  * https://docs.bitnami.com/aws/get-started-eks/
+	* https://eksworkshop.com/helm_root/helm_nginx/installnginx/
+	* https://medium.com/@tanzwud.work/k8s-aws-eks-helm-tiller-setup-with-rbac-ae73ea4dc312			
