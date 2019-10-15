@@ -420,7 +420,11 @@ Kubernetes Administration:
 	kubectl get pods		
 	  		
 
-# Extenal end endpoints
+# External end
+* https://unofficial-kubernetes.readthedocs.io/en/latest/concepts/services-networking/service/ 
+* https://akomljen.com/kubernetes-tips-part-1/
+* https://v1-13.docs.kubernetes.io/docs/concepts/services-networking/service/
+* https://docs.okd.io/latest/dev_guide/integrating_external_services.html
 * https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-mapping-external-services
   * https://github.com/kubernetes/minikube/issues/2735
   * https://stackoverflow.com/questions/49289009/during-local-development-with-kubernetes-minikube-how-should-i-connect-to-postg
@@ -450,4 +454,8 @@ Kubernetes Administration:
 # Prod EKS	
   * https://docs.bitnami.com/aws/get-started-eks/
 	* https://eksworkshop.com/helm_root/helm_nginx/installnginx/
-	* https://medium.com/@tanzwud.work/k8s-aws-eks-helm-tiller-setup-with-rbac-ae73ea4dc312			
+	* https://medium.com/@tanzwud.work/k8s-aws-eks-helm-tiller-setup-with-rbac-ae73ea4dc312		
+	
+	
+# Securing Ngnix
+  * https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/		
