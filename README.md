@@ -370,6 +370,12 @@ Kubernetes Administration:
 	request & limits:
 	  https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-resource-requests-and-limits	
 		
+		https://medium.com/expedia-group-tech/kubernetes-container-resource-requirements-part-1-memory-a9fbe02c8a5f
+		
+		https://medium.com/expedia-group-tech/kubernetes-container-resource-requirements-part-2-cpu-83ca227a18b1
+		
+		https://medium.com/faun/java-application-optimization-on-kubernetes-on-the-example-of-a-spring-boot-microservice-cf3737a2219c
+		
 	User Management:
 	  A normal User, which is used to access the user externally. (through kubectl), this 
 		user is not managed using objects
