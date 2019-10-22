@@ -315,7 +315,8 @@ Advanced Topics:
 			LoadBalancer / reverse Proxies / API Gateways 
 			Running a daemon that only needs one instance per physical instance
 			
-	Resource Usage Monitoring: (metric server)
+	Resource Usage Monitoring: (metric server) - profiling
+	  * https://medium.com/@cagri.ersen/kubernetes-metrics-server-installation-d93380de008
 	  Heapster(deprecated) enables Container Cluster Monitoring and Performance Analysis
 		it is a prerequisite if you want to do a pod auto scaling
 		Heapster exports cluster metrics via REST endpoints
@@ -375,6 +376,8 @@ Kubernetes Administration:
 		https://medium.com/expedia-group-tech/kubernetes-container-resource-requirements-part-2-cpu-83ca227a18b1
 		
 		https://medium.com/faun/java-application-optimization-on-kubernetes-on-the-example-of-a-spring-boot-microservice-cf3737a2219c
+		
+		https://medium.com/@betz.mark/understanding-resource-limits-in-kubernetes-cpu-time-9eff74d3161b
 		
 	User Management:
 	  A normal User, which is used to access the user externally. (through kubectl), this 
@@ -457,11 +460,18 @@ Kubernetes Administration:
   * https://darkowlzz.github.io/post/minikube-config/			
 	
 	
-# Prod EKS	
+# Prod EKS setup	
+  * http://bit.ly/2nZVsNR
   * https://docs.bitnami.com/aws/get-started-eks/
 	* https://eksworkshop.com/helm_root/helm_nginx/installnginx/
 	* https://medium.com/@tanzwud.work/k8s-aws-eks-helm-tiller-setup-with-rbac-ae73ea4dc312		
 	
 	
 # Securing Ngnix
-  * https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/		
+  * https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/	
+	
+# Setup Https on k8s
+  * https://www.youtube.com/watch?v=gEzCKNA-nCg&feature=youtu.be
+	
+# Output Mode
+  * kubectl get <command> <name> -o yaml			
