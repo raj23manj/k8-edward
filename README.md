@@ -279,6 +279,12 @@ Advanced Topics:
 		there are default images available	
 		we can use ingressController to reduce LoadBalancer costs 
 		
+		kubectl get ingress
+		kubectl describe ingress <ingress-name>
+		
+		TLS:
+		  https://www.youtube.com/watch?v=gEzCKNA-nCg&feature=youtu.be
+		
 	External DNS: (external-dns)
 	  we can use one loadbalancer to capture all the traffic and pass it to the ingressController
 		works only for http(s)
